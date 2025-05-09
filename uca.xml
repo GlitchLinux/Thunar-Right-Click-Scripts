@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1736989118649432-1</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Example for a custom action</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>archive</icon>
+	<name>Extract Here</name>
+	<submenu></submenu>
+	<unique-id>1746776148377255-1</unique-id>
+	<command>ark --batch --autodestination %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*.zip;*.rar;*.7z;*.tar;*.tar.gz;*.tgz;*.tar.bz2;*.tbz2;*.tar.xz;*.txz;*.iso</patterns>
+	<image-files/>
+	<other-files/>
+</action>
+<action>
+	<icon>edit-copy</icon>
+	<name>Copy Path</name>
+	<submenu></submenu>
+	<unique-id>1746778379622825-2</unique-id>
+	<command>bash -c &apos;echo -n &quot;%F&quot; | xclip -selection clipboard&apos;</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>account-edit</icon>
+	<name>Nano Edit</name>
+	<submenu></submenu>
+	<unique-id>1746780400379011-3</unique-id>
+	<command>bash -c &apos;xfce4-terminal -x nano &quot;%f&quot;&apos;</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>autokey-status</icon>
+	<name>Root Open</name>
+	<submenu></submenu>
+	<unique-id>1746779307306707-2</unique-id>
+	<command>sudo thunar %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>utilities-system-monitor</icon>
+	<name>Execute Bash</name>
+	<submenu></submenu>
+	<unique-id>1746778447272640-3</unique-id>
+	<command>xfce4-terminal -e &quot;bash -c &apos;if [[ \&quot;%f\&quot; == *.sh ]]; then bash \&quot;%f\&quot;; elif [[ \&quot;%f\&quot; == *.py ]]; then python3 \&quot;%f\&quot;; fi; read -p \&quot;Press [Enter] to close...\&quot;&apos;&quot;</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*.sh</patterns>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>python</icon>
+	<name>Execute Python</name>
+	<submenu></submenu>
+	<unique-id>1746779055456787-1</unique-id>
+	<command>xfce4-terminal -e &quot;bash -c &apos;if [[ \&quot;%f\&quot; == *.sh ]]; then bash \&quot;%f\&quot;; elif [[ \&quot;%f\&quot; == *.py ]]; then python3 \&quot;%f\&quot;; fi; read -p \&quot;Press [Enter] to close...\&quot;&apos;&quot;</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*.py</patterns>
+	<text-files/>
+</action>
+<action>
+	<icon>state-warning</icon>
+	<name>Secure Erase File</name>
+	<submenu></submenu>
+	<unique-id>1746781126882232-4</unique-id>
+	<command>bash -c &apos;p=&quot;$0&quot;; if [ -f &quot;$p&quot; ]; then tmp=&quot;/tmp/$(basename &quot;$p&quot;)_$$.tar&quot;; sudo tar -cf &quot;$tmp&quot; &quot;$p&quot; &amp;&amp; sudo dd if=/dev/urandom of=&quot;$tmp&quot; bs=1M count=3 status=none &amp;&amp; sudo rm -f &quot;$p&quot;; elif [ -d &quot;$p&quot; ]; then tmp=&quot;/tmp/$(basename &quot;$p&quot;)_$$.tar&quot;; sudo tar -cf &quot;$tmp&quot; -C &quot;$(dirname &quot;$p&quot;)&quot; &quot;$(basename &quot;$p&quot;)&quot; &amp;&amp; sudo dd if=/dev/urandom of=&quot;$tmp&quot; bs=1M count=10 status=none &amp;&amp; sudo rm -rf &quot;$p&quot;; fi&apos; %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>folder-yellow-visiting</icon>
+	<name>Secure Erase Directory</name>
+	<submenu></submenu>
+	<unique-id>1746783140561009-5</unique-id>
+	<command>bash -c &apos;p=&quot;$0&quot;; if [ -f &quot;$p&quot; ]; then tmp=&quot;/tmp/$(basename &quot;$p&quot;)_$$.tar&quot;; sudo tar -cf &quot;$tmp&quot; &quot;$p&quot; &amp;&amp; sudo dd if=/dev/urandom of=&quot;$tmp&quot; bs=1M count=3 status=none &amp;&amp; sudo rm -f &quot;$p&quot;; elif [ -d &quot;$p&quot; ]; then tmp=&quot;/tmp/$(basename &quot;$p&quot;)_$$.tar&quot;; sudo tar -cf &quot;$tmp&quot; -C &quot;$(dirname &quot;$p&quot;)&quot; &quot;$(basename &quot;$p&quot;)&quot; &amp;&amp; sudo dd if=/dev/urandom of=&quot;$tmp&quot; bs=1M count=10 status=none &amp;&amp; sudo rm -rf &quot;$p&quot;; fi&apos; %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+</actions>
