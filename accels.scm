@@ -121,3 +121,4 @@
 ; (gtk_accel_path "<Actions>/ThunarStatusBar/toggle-filetype" "")
 ; (gtk_accel_path "<Actions>/ThunarWindow/detach-tab" "")
 ; (gtk_accel_path "<Actions>/ThunarBookmarks/9cf12609e6526b7793cab3c6bdf51042" "")
+
