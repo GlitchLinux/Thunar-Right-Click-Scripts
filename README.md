@@ -5,4 +5,4 @@
 
 DEPENDENCIES
 
-sudo apt update && sudo apt install imagemagick libnotify-bin tree xclip -y
+sudo apt update && sudo apt install ffmpeg libnotify-bin libnotify-bin tree xclip -y
