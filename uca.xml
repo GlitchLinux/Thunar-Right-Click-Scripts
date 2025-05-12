@@ -6,7 +6,7 @@
 	<submenu></submenu>
 	<unique-id>1736989118649432-1</unique-id>
 	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
-	<description>Example for a custom action</description>
+	<description></description>
 	<range></range>
 	<patterns>*</patterns>
 	<startup-notify/>
@@ -14,7 +14,7 @@
 </action>
 <action>
 	<icon>view-list-tree</icon>
-	<name>Copy Directory Tree</name>
+	<name>Directory Tree &gt; Clipboard</name>
 	<submenu></submenu>
 	<unique-id>1747078088003067-3</unique-id>
 	<command>bash -c &apos;kdialog --passivepopup &quot;⚠️ Constructing tree...&quot; 2 &amp;&amp; tree -a &quot;%f&quot; | xclip -sel clip &amp;&amp; kdialog --passivepopup &quot;✅ Directory tree copied to clipboard!&quot; 2&apos;</command>
@@ -76,7 +76,7 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 </action>
 <action>
 	<icon>edit-copy</icon>
-	<name>Copy Path</name>
+	<name>Copy Path To Clipboard</name>
 	<submenu></submenu>
 	<unique-id>1746778379622825-2</unique-id>
 	<command>bash -c &apos;echo -n &quot;%F&quot; | xclip -sel clip &amp;&amp; kdialog --title &quot;✅ Copied!&quot; --passivepopup &quot;$(echo &quot;%F&quot; | wc -w) paths copied&quot; 3&apos;</command>
@@ -230,5 +230,26 @@ rm -rf &quot;$TMP_DIR&quot;
 	<range>*</range>
 	<patterns>*</patterns>
 	<directories/>
+</action>
+<action>
+	<icon>kipi-dngconverter</icon>
+	<name>Convert to .png</name>
+	<submenu></submenu>
+	<unique-id>1747084575984560-1</unique-id>
+	<command>bash -c &apos;
+INPUT=&quot;%f&quot;
+OUTPUT=&quot;${INPUT%.*}.png&quot;
+
+if [ -f &quot;$INPUT&quot; ]; then
+    ffmpeg -hide_banner -loglevel error -y -i &quot;$INPUT&quot; &quot;$OUTPUT&quot; &amp;&amp; \
+    notify-send &quot;Conversion Done&quot; &quot;${INPUT##*/} → ${OUTPUT##*/}&quot;
+else
+    notify-send &quot;Error&quot; &quot;Not a valid file&quot;
+fi
+&apos;</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*.jpg*.jpeg</patterns>
+	<image-files/>
 </action>
 </actions>
