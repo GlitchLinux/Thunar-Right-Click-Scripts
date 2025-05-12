@@ -14,7 +14,7 @@
 </action>
 <action>
 	<icon>view-list-tree</icon>
-	<name>Copy Directory Layout </name>
+	<name>Copy Directory Tree</name>
 	<submenu></submenu>
 	<unique-id>1747078088003067-3</unique-id>
 	<command>bash -c &apos;kdialog --passivepopup &quot;⚠️ Constructing tree...&quot; 2 &amp;&amp; tree -a &quot;%f&quot; | xclip -sel clip &amp;&amp; kdialog --passivepopup &quot;✅ Directory tree copied to clipboard!&quot; 2&apos;</command>
@@ -154,37 +154,34 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 	<text-files/>
 </action>
 <action>
-	<icon>advert-block</icon>
-	<name>Delete Directory</name>
-	<submenu></submenu>
-	<unique-id>1747076914282463-2</unique-id>
-	<command>sudo rm -rf %F</command>
-	<description></description>
-	<range>*</range>
-	<patterns>*</patterns>
-	<directories/>
-</action>
-<action>
 	<icon>state-warning</icon>
 	<name>Secure Erase File</name>
 	<submenu></submenu>
 	<unique-id>1746781126882232-4</unique-id>
-	<command>bash -c &apos;p=&quot;$0&quot;; if [ -f &quot;$p&quot; ]; then tmp=&quot;/tmp/$(basename &quot;$p&quot;)_$$.tar&quot;; sudo tar -cf &quot;$tmp&quot; &quot;$p&quot; &amp;&amp; sudo dd if=/dev/urandom of=&quot;$tmp&quot; bs=1M count=3 status=none &amp;&amp; sudo rm -f &quot;$p&quot;; elif [ -d &quot;$p&quot; ]; then tmp=&quot;/tmp/$(basename &quot;$p&quot;)_$$.tar&quot;; sudo tar -cf &quot;$tmp&quot; -C &quot;$(dirname &quot;$p&quot;)&quot; &quot;$(basename &quot;$p&quot;)&quot; &amp;&amp; sudo dd if=/dev/urandom of=&quot;$tmp&quot; bs=1M count=10 status=none &amp;&amp; sudo rm -rf &quot;$p&quot;; fi&apos; %f</command>
-	<description></description>
-	<range>*</range>
-	<patterns>*</patterns>
-	<audio-files/>
-	<image-files/>
-	<other-files/>
-	<text-files/>
-	<video-files/>
-</action>
-<action>
-	<icon>advert-block</icon>
-	<name>Delete File</name>
-	<submenu></submenu>
-	<unique-id>1747076771451401-1</unique-id>
-	<command>sudo rm -f %F</command>
+	<command>bash -c &apos;
+TARGET=&quot;%f&quot;
+
+# Verify we have a regular file
+[ -f &quot;$TARGET&quot; ] || {
+    zenity --error --text=&quot;Not a valid file: $TARGET&quot;
+    exit 1
+}
+
+# Get confirmation
+zenity --question \
+       --title=&quot;Secure Erase&quot; \
+       --text=&quot;Permanently destroy ${TARGET##*/}?&quot; \
+       --ok-label=&quot;DESTROY&quot; \
+       --cancel-label=&quot;Cancel&quot; || exit 0
+
+# Execute with proper error handling
+if sudo shred -vz -n1 &quot;$TARGET&quot; &amp;&amp; sudo rm -f &quot;$TARGET&quot;; then
+    exit 0
+else
+    zenity --error --text=&quot;Failed to erase $TARGET&quot;
+    exit 1
+fi
+&apos;</command>
 	<description></description>
 	<range>*</range>
 	<patterns>*</patterns>
@@ -199,7 +196,36 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 	<name>Secure Erase Directory</name>
 	<submenu></submenu>
 	<unique-id>1746783140561009-5</unique-id>
-	<command>bash -c &apos;p=&quot;$0&quot;; if [ -f &quot;$p&quot; ]; then tmp=&quot;/tmp/$(basename &quot;$p&quot;)_$$.tar&quot;; sudo tar -cf &quot;$tmp&quot; &quot;$p&quot; &amp;&amp; sudo dd if=/dev/urandom of=&quot;$tmp&quot; bs=1M count=3 status=none &amp;&amp; sudo rm -f &quot;$p&quot;; elif [ -d &quot;$p&quot; ]; then tmp=&quot;/tmp/$(basename &quot;$p&quot;)_$$.tar&quot;; sudo tar -cf &quot;$tmp&quot; -C &quot;$(dirname &quot;$p&quot;)&quot; &quot;$(basename &quot;$p&quot;)&quot; &amp;&amp; sudo dd if=/dev/urandom of=&quot;$tmp&quot; bs=1M count=10 status=none &amp;&amp; sudo rm -rf &quot;$p&quot;; fi&apos; %f</command>
+	<command>bash -c &apos;
+TARGET=&quot;%f&quot;
+BASENAME=$(basename &quot;$TARGET&quot;)
+TMP_DIR=&quot;/tmp/secure_erase_$$&quot;
+
+# Zenity confirmation (mandatory safety check)
+zenity --question --title=&quot;Secure Erase&quot; \
+       --text=&quot;Permanently erase $BASENAME?\n\nThis cannot be undone!&quot; \
+       --width=300 \
+       --ok-label=&quot;ERASE&quot; \
+       --cancel-label=&quot;Cancel&quot; || exit 1
+
+mkdir -p &quot;$TMP_DIR&quot;
+TMP_FILE=&quot;$TMP_DIR/${BASENAME}_$(date +%s).tar&quot;
+
+if [ -f &quot;$TARGET&quot; ]; then
+    # File handling (3-pass shred)
+    sudo tar -cf &quot;$TMP_FILE&quot; &quot;$TARGET&quot; &amp;&amp; \
+    sudo shred -n 3 -z -u &quot;$TMP_FILE&quot; &amp;&amp; \
+    sudo rm -f &quot;$TARGET&quot;
+
+elif [ -d &quot;$TARGET&quot; ]; then
+    # Directory handling (7-pass shred)
+    sudo tar -cf &quot;$TMP_FILE&quot; -C &quot;$(dirname &quot;$TARGET&quot;)&quot; &quot;$(basename &quot;$TARGET&quot;)&quot; &amp;&amp; \
+    sudo shred -n 7 -z -u &quot;$TMP_FILE&quot; &amp;&amp; \
+    sudo rm -rf &quot;$TARGET&quot;
+fi
+
+rm -rf &quot;$TMP_DIR&quot;
+&apos;</command>
 	<description></description>
 	<range>*</range>
 	<patterns>*</patterns>
