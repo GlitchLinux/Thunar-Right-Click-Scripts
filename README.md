@@ -35,7 +35,6 @@ sudo apt install -y \
     thunar \
     xfce4-terminal \
     python3 \
-    shred \
     ffmpeg \
     libnotify-bin \
     exo-utils 
