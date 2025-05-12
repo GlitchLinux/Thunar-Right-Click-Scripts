@@ -3,7 +3,6 @@
 ~/.config/Thunar/accels.scm 
 
 ```bash
-
 #!/bin/bash
 
 cd ~/.config/Thunar/
@@ -40,4 +39,10 @@ sudo apt install -y \
     ffmpeg \
     libnotify-bin \
     exo-utils 
+
+cd /usr/share/pixmaps/
+sudo wget https://github.com/GlitchLinux/Thunar-Right-Click-Scripts/raw/refs/heads/main/ICONPACK.zip
+sudo unzip -o ICONPACK.zip  # -o flag will overwrite existing files without prompting
+sudo rm ICONPACK.zip  # remove the zip file when done
+sudo gtk-update-icon-cache /usr/share/icons/hicolor/
 ```
