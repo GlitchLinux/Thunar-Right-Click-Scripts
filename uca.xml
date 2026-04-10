@@ -17,18 +17,6 @@
 	<video-files/>
 </action>
 <action>
-	<icon>custom-fileopen</icon>
-	<name>Copy File Contents to Clipboard</name>
-	<submenu></submenu>
-	<unique-id>1748507780071483-2</unique-id>
-	<command>cat %f | xclip -selection clipboard -in &amp;&amp; notify-send &quot;Clipboard&quot; &quot;File contents copied to clipboard&quot;</command>
-	<description></description>
-	<range>*</range>
-	<patterns>*.txt;*.log;*.json;*.xml;*.csv;*.conf;*.cfg;*.ini;*.sh;*.py;*.js;*.html;*.css</patterns>
-	<other-files/>
-	<text-files/>
-</action>
-<action>
 	<icon>drive-multidisk</icon>
 	<name>Mount Virtual Disk - Writable</name>
 	<submenu></submenu>
@@ -165,6 +153,36 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 	<text-files/>
 </action>
 <action>
+	<icon>network-transmit</icon>
+	<name>Send to Glitch-Server</name>
+	<submenu></submenu>
+	<unique-id>1775845809794201-1</unique-id>
+	<command>bash -c &apos;scp -P 2222 &quot;%f&quot; x@glitchserver.com:/FILES/RECEIVED/ &amp;&amp; kdialog --passivepopup &quot; Sent: %n → gLiTcH-SERVER:/FILES/RECEIVED/&quot; 4 || kdialog --passivepopup &quot; Transfer failed: %n&quot; 4&apos;</command>
+	<description>Send file to glitchserver.com:/FILES/RECEIVED/</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>network-transmit</icon>
+	<name>Send to Contabo-Vps</name>
+	<submenu></submenu>
+	<unique-id>1775845809794202-2</unique-id>
+	<command>bash -c &apos;scp &quot;%f&quot; x@glitchlinux.com:/home/x/Desktop/RECEIVED/ &amp;&amp; kdialog --passivepopup &quot; Sent: %n → Contabo:/home/x/Desktop/RECEIVED/&quot; 4 || kdialog --passivepopup &quot; Transfer failed: %n&quot; 4&apos;</command>
+	<description>Send file to glitchlinux.com:/home/x/Desktop/RECEIVED/</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
 	<icon>btrfs-assistant</icon>
 	<name>Make Executable</name>
 	<submenu></submenu>
@@ -206,4 +224,36 @@ fi</command>
 	<text-files/>
 	<video-files/>
 </action>
-</actions>
+<action>
+	<icon>mx-user</icon>
+	<name>Take Ownership</name>
+	<submenu></submenu>
+	<unique-id>1775845809794128-1</unique-id>
+	<command>pkexec chown -Rf $USER %f</command>
+	<description>Change ownership of file/folder to current user</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>data-warning</icon>
+	<name>Paste as Root</name>
+	<submenu></submenu>
+	<unique-id>1775845809794177-3</unique-id>
+	<command>echo &quot;cp -r /tmp/.thunar_root_copy %f&quot; &gt; /tmp/thunar_action.sh &amp;&amp; sudo bash /tmp/thunar_action.sh
+</command>
+	<description></description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
