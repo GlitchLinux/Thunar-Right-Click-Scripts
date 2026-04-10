@@ -154,13 +154,14 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 </action>
 <action>
 	<icon>network-transmit</icon>
-	<name>Send to Glitch-Server</name>
+	<name>Transfer to gLiTcH-SERVER</name>
 	<submenu></submenu>
 	<unique-id>1775845809794201-1</unique-id>
-	<command>bash -c &apos;scp -P 2222 &quot;%f&quot; x@glitchserver.com:/FILES/RECEIVED/ &amp;&amp; kdialog --passivepopup &quot; Sent: %n → gLiTcH-SERVER:/FILES/RECEIVED/&quot; 4 || kdialog --passivepopup &quot; Transfer failed: %n&quot; 4&apos;</command>
-	<description>Send file to glitchserver.com:/FILES/RECEIVED/</description>
+	<command>bash -c 'scp -r -P 2222 "%f" x@glitchserver.com:/FILES/RECEIVED/ &amp;&amp; zenity --notification --text="✅ Sent: %n → gLiTcH-SERVER:/FILES/RECEIVED/" || zenity --notification --text="❌ Transfer failed: %n"'</command>
+	<description>Send file or directory to glitchserver.com:/FILES/RECEIVED/</description>
 	<range>*</range>
 	<patterns>*</patterns>
+	<directories/>
 	<audio-files/>
 	<image-files/>
 	<other-files/>
@@ -169,13 +170,14 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 </action>
 <action>
 	<icon>network-transmit</icon>
-	<name>Send to Contabo-Vps</name>
+	<name>Transfer to Contabo VPS</name>
 	<submenu></submenu>
 	<unique-id>1775845809794202-2</unique-id>
-	<command>bash -c &apos;scp &quot;%f&quot; x@glitchlinux.com:/home/x/Desktop/RECEIVED/ &amp;&amp; kdialog --passivepopup &quot; Sent: %n → Contabo:/home/x/Desktop/RECEIVED/&quot; 4 || kdialog --passivepopup &quot; Transfer failed: %n&quot; 4&apos;</command>
-	<description>Send file to glitchlinux.com:/home/x/Desktop/RECEIVED/</description>
+	<command>bash -c 'scp -r "%f" x@glitchlinux.com:/home/x/Desktop/RECEIVED/ &amp;&amp; zenity --notification --text="✅ Sent: %n → Contabo:/home/x/Desktop/RECEIVED/" || zenity --notification --text="❌ Transfer failed: %n"'</command>
+	<description>Send file or directory to glitchlinux.com:/home/x/Desktop/RECEIVED/</description>
 	<range>*</range>
 	<patterns>*</patterns>
+	<directories/>
 	<audio-files/>
 	<image-files/>
 	<other-files/>
@@ -248,6 +250,38 @@ fi</command>
 	<command>echo &quot;cp -r /tmp/.thunar_root_copy %f&quot; &gt; /tmp/thunar_action.sh &amp;&amp; sudo bash /tmp/thunar_action.sh
 </command>
 	<description></description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>network-transmit</icon>
+	<name>Transfer to gLiTcH-SERVER</name>
+	<submenu></submenu>
+	<unique-id>1775845809794201-1</unique-id>
+	<command>bash -c 'scp -r -P 2222 "%f" x@glitchserver.com:/FILES/RECEIVED/ &amp;&amp; zenity --notification --text="✅ Sent: %n → gLiTcH-SERVER:/FILES/RECEIVED/" || zenity --notification --text="❌ Transfer failed: %n"'</command>
+	<description>Send file or directory to glitchserver.com:/FILES/RECEIVED/</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>network-transmit</icon>
+	<name>Transfer to Contabo VPS</name>
+	<submenu></submenu>
+	<unique-id>1775845809794202-2</unique-id>
+	<command>bash -c 'scp -r "%f" x@glitchlinux.com:/home/x/Desktop/RECEIVED/ &amp;&amp; zenity --notification --text="✅ Sent: %n → Contabo:/home/x/Desktop/RECEIVED/" || zenity --notification --text="❌ Transfer failed: %n"'</command>
+	<description>Send file or directory to glitchlinux.com:/home/x/Desktop/RECEIVED/</description>
 	<range></range>
 	<patterns>*</patterns>
 	<directories/>
