@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
 <action>
-	<icon>dialog-error</icon>
+	<icon>/usr/share/icons/filetype-icons/message-partial.png</icon>
 	<name>Root Open</name>
 	<submenu></submenu>
 	<unique-id>1746779307306707-2</unique-id>
@@ -17,7 +17,7 @@
 	<video-files/>
 </action>
 <action>
-	<icon>/usr/share/icons/filetype-icons/virtualbox-vbox-extpack.png</icon>
+	<icon>/usr/share/icons/filetype-icons/application-x-raw-disk-image.png</icon>
 	<name>Mount Virtual Disk - Writable</name>
 	<submenu></submenu>
 	<unique-id>1762801909224233-1</unique-id>
@@ -68,7 +68,7 @@
 	<directories/>
 </action>
 <action>
-	<icon>peazip</icon>
+	<icon>/usr/share/icons/filetype-icons/application-zip.png</icon>
 	<name>.ZIP This Directory </name>
 	<submenu></submenu>
 	<unique-id>1747080478910947-2</unique-id>
@@ -183,7 +183,7 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 	<video-files/>
 </action>
 <action>
-	<icon>application-x-executable</icon>
+	<icon>/usr/share/icons/filetype-icons/text-x-makefile.png</icon>
 	<name>Make Executable</name>
 	<submenu></submenu>
 	<unique-id>1747079720055029-1</unique-id>
@@ -207,7 +207,7 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 	<text-files/>
 </action>
 <action>
-	<icon>dialog-warning</icon>
+	<icon>gtk-caps-lock-warning</icon>
 	<name>Root Delete</name>
 	<submenu></submenu>
 	<unique-id>1748510121574965-1</unique-id>
@@ -231,23 +231,6 @@ fi</command>
 	<unique-id>1775845809794128-1</unique-id>
 	<command>pkexec chown -Rf $USER %f</command>
 	<description>Change ownership of file/folder to current user</description>
-	<range></range>
-	<patterns>*</patterns>
-	<directories/>
-	<audio-files/>
-	<image-files/>
-	<other-files/>
-	<text-files/>
-	<video-files/>
-</action>
-<action>
-	<icon>spray-mode-copy</icon>
-	<name>Paste as Root</name>
-	<submenu></submenu>
-	<unique-id>1775845809794177-3</unique-id>
-	<command>echo &quot;cp -r /tmp/.thunar_root_copy %f&quot; &gt; /tmp/thunar_action.sh &amp;&amp; sudo bash /tmp/thunar_action.sh
-</command>
-	<description></description>
 	<range></range>
 	<patterns>*</patterns>
 	<directories/>
