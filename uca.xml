@@ -17,7 +17,7 @@
 	<video-files/>
 </action>
 <action>
-	<icon>drive-multidisk</icon>
+	<icon>/usr/share/icons/filetype-icons/virtualbox-vbox-extpack.png</icon>
 	<name>Mount Virtual Disk - Writable</name>
 	<submenu></submenu>
 	<unique-id>1762801909224233-1</unique-id>
@@ -119,7 +119,7 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 	<other-files/>
 </action>
 <action>
-	<icon>os_debian</icon>
+	<icon>/usr/share/icons/filetype-icons/application-x-deb.png</icon>
 	<name>Install .deb Package</name>
 	<submenu></submenu>
 	<unique-id>1748507208431814-1</unique-id>
@@ -130,7 +130,7 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 	<other-files/>
 </action>
 <action>
-	<icon>tool_shell</icon>
+	<icon>/usr/share/icons/filetype-icons/bash.png</icon>
 	<name>Execute Bash</name>
 	<submenu></submenu>
 	<unique-id>1746778447272640-3</unique-id>
@@ -142,7 +142,7 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 	<text-files/>
 </action>
 <action>
-	<icon>python3.13</icon>
+	<icon>/usr/share/icons/filetype-icons/python.png</icon>
 	<name>Execute Python</name>
 	<submenu></submenu>
 	<unique-id>1746779055456787-1</unique-id>
@@ -195,7 +195,7 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 	<text-files/>
 </action>
 <action>
-	<icon>account-edit</icon>
+	<icon>/usr/share/icons/filetype-icons/text-x-plain.png</icon>
 	<name>Nano Edit</name>
 	<submenu></submenu>
 	<unique-id>1746780400379011-3</unique-id>
