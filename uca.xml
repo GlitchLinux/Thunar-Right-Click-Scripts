@@ -239,7 +239,8 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 </command>
 	<description></description>
 	<range>*</range>
-	<patterns>*.img;*.vhd;*.raw</patterns>
+	<patterns>*.img;*.vhd;*.vtoy</patterns>
 	<other-files/>
+	<text-files/>
 </action>
 </actions>
