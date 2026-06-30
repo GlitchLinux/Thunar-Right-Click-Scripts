@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
 <action>
-	<icon>autokey-status</icon>
+	<icon>dialog-error</icon>
 	<name>Root Open</name>
 	<submenu></submenu>
 	<unique-id>1746779307306707-2</unique-id>
@@ -56,7 +56,7 @@
 	<video-files/>
 </action>
 <action>
-	<icon>utilities-x-terminal</icon>
+	<icon>dialog-warning</icon>
 	<name>Open Terminal Here</name>
 	<submenu></submenu>
 	<unique-id>1736989118649432-1</unique-id>
@@ -97,7 +97,7 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 	<other-files/>
 </action>
 <action>
-	<icon>/home/x/Pictures/ICONS/qemu-greyfx.png</icon>
+	<icon>qemu-greyfx</icon>
 	<name>QuickBoot (BIOS) </name>
 	<submenu></submenu>
 	<unique-id>1747075134582799-1</unique-id>
@@ -108,7 +108,7 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 	<other-files/>
 </action>
 <action>
-	<icon>/home/x/Pictures/ICONS/qemu-greyfx.png</icon>
+	<icon>qemu-greyfx</icon>
 	<name>QuickBoot (UEFI)</name>
 	<submenu></submenu>
 	<unique-id>1747075939393183-2</unique-id>
@@ -119,7 +119,7 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 	<other-files/>
 </action>
 <action>
-	<icon>application-x-deb</icon>
+	<icon>os_debian</icon>
 	<name>Install .deb Package</name>
 	<submenu></submenu>
 	<unique-id>1748507208431814-1</unique-id>
@@ -130,19 +130,19 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 	<other-files/>
 </action>
 <action>
-	<icon>text-x-fsharp</icon>
+	<icon>tool_shell</icon>
 	<name>Execute Bash</name>
 	<submenu></submenu>
 	<unique-id>1746778447272640-3</unique-id>
-	<command>xfce4-terminal -e &quot;bash -c &apos;if [[ \&quot;%f\&quot; == *.sh ]]; then bash \&quot;%f\&quot;; elif [[ \&quot;%f\&quot; == *.py ]]; then python3 \&quot;%f\&quot;; fi; read -p \&quot;Press [Enter] to close...\&quot;&apos;&quot;</command>
+	<command>xfce4-terminal -e &quot;bash -c &apos;if [[ \&quot;%f\&quot; == * ]]; then bash \&quot;%f\&quot;; elif [[ \&quot;%f\&quot; == *.py ]]; then python3 \&quot;%f\&quot;; fi; echo \&quot;[Done]\&quot;; sleep 1; exit&apos;&quot;</command>
 	<description></description>
 	<range>*</range>
-	<patterns>*.sh</patterns>
+	<patterns>*</patterns>
 	<other-files/>
 	<text-files/>
 </action>
 <action>
-	<icon>python</icon>
+	<icon>python3.13</icon>
 	<name>Execute Python</name>
 	<submenu></submenu>
 	<unique-id>1746779055456787-1</unique-id>
@@ -154,14 +154,13 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 </action>
 <action>
 	<icon>network-transmit</icon>
-	<name>Transfer to gLiTcH-SERVER</name>
+	<name>Send to Glitch-Server</name>
 	<submenu></submenu>
 	<unique-id>1775845809794201-1</unique-id>
-	<command>bash -c 'scp -r -P 2222 "%f" x@glitchserver.com:/FILES/RECEIVED/ &amp;&amp; zenity --notification --text="✅ Sent: %n → gLiTcH-SERVER:/FILES/RECEIVED/" || zenity --notification --text="❌ Transfer failed: %n"'</command>
-	<description>Send file or directory to glitchserver.com:/FILES/RECEIVED/</description>
+	<command>bash -c &apos;scp -P 2222 &quot;%f&quot; x@glitchserver.com:/FILES/RECEIVED/ &amp;&amp; kdialog --passivepopup &quot; Sent: %n → gLiTcH-SERVER:/FILES/RECEIVED/&quot; 4 || kdialog --passivepopup &quot; Transfer failed: %n&quot; 4&apos;</command>
+	<description>Send file to glitchserver.com:/FILES/RECEIVED/</description>
 	<range>*</range>
 	<patterns>*</patterns>
-	<directories/>
 	<audio-files/>
 	<image-files/>
 	<other-files/>
@@ -170,14 +169,13 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 </action>
 <action>
 	<icon>network-transmit</icon>
-	<name>Transfer to Contabo VPS</name>
+	<name>Send to Contabo-Vps</name>
 	<submenu></submenu>
 	<unique-id>1775845809794202-2</unique-id>
-	<command>bash -c 'scp -r "%f" x@glitchlinux.com:/home/x/Desktop/RECEIVED/ &amp;&amp; zenity --notification --text="✅ Sent: %n → Contabo:/home/x/Desktop/RECEIVED/" || zenity --notification --text="❌ Transfer failed: %n"'</command>
-	<description>Send file or directory to glitchlinux.com:/home/x/Desktop/RECEIVED/</description>
+	<command>bash -c &apos;scp &quot;%f&quot; x@glitchlinux.com:/home/x/Desktop/RECEIVED/ &amp;&amp; kdialog --passivepopup &quot; Sent: %n → Contabo:/home/x/Desktop/RECEIVED/&quot; 4 || kdialog --passivepopup &quot; Transfer failed: %n&quot; 4&apos;</command>
+	<description>Send file to glitchlinux.com:/home/x/Desktop/RECEIVED/</description>
 	<range>*</range>
 	<patterns>*</patterns>
-	<directories/>
 	<audio-files/>
 	<image-files/>
 	<other-files/>
@@ -185,7 +183,7 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 	<video-files/>
 </action>
 <action>
-	<icon>btrfs-assistant</icon>
+	<icon>application-x-executable</icon>
 	<name>Make Executable</name>
 	<submenu></submenu>
 	<unique-id>1747079720055029-1</unique-id>
@@ -209,7 +207,7 @@ kdialog --title &quot;✅ ZIP Complete&quot; --passivepopup &quot;Created: $ZIP_
 	<text-files/>
 </action>
 <action>
-	<icon>gtk-dialog-warning-panel</icon>
+	<icon>dialog-warning</icon>
 	<name>Root Delete</name>
 	<submenu></submenu>
 	<unique-id>1748510121574965-1</unique-id>
@@ -227,7 +225,7 @@ fi</command>
 	<video-files/>
 </action>
 <action>
-	<icon>mx-user</icon>
+	<icon>xfsm-switch-user</icon>
 	<name>Take Ownership</name>
 	<submenu></submenu>
 	<unique-id>1775845809794128-1</unique-id>
@@ -243,7 +241,7 @@ fi</command>
 	<video-files/>
 </action>
 <action>
-	<icon>data-warning</icon>
+	<icon>spray-mode-copy</icon>
 	<name>Paste as Root</name>
 	<submenu></submenu>
 	<unique-id>1775845809794177-3</unique-id>
@@ -259,35 +257,4 @@ fi</command>
 	<text-files/>
 	<video-files/>
 </action>
-<action>
-	<icon>network-transmit</icon>
-	<name>Transfer to gLiTcH-SERVER</name>
-	<submenu></submenu>
-	<unique-id>1775845809794201-1</unique-id>
-	<command>bash -c 'scp -r -P 2222 "%f" x@glitchserver.com:/FILES/RECEIVED/ &amp;&amp; zenity --notification --text="✅ Sent: %n → gLiTcH-SERVER:/FILES/RECEIVED/" || zenity --notification --text="❌ Transfer failed: %n"'</command>
-	<description>Send file or directory to glitchserver.com:/FILES/RECEIVED/</description>
-	<range></range>
-	<patterns>*</patterns>
-	<directories/>
-	<audio-files/>
-	<image-files/>
-	<other-files/>
-	<text-files/>
-	<video-files/>
-</action>
-<action>
-	<icon>network-transmit</icon>
-	<name>Transfer to Contabo VPS</name>
-	<submenu></submenu>
-	<unique-id>1775845809794202-2</unique-id>
-	<command>bash -c 'scp -r "%f" x@glitchlinux.com:/home/x/Desktop/RECEIVED/ &amp;&amp; zenity --notification --text="✅ Sent: %n → Contabo:/home/x/Desktop/RECEIVED/" || zenity --notification --text="❌ Transfer failed: %n"'</command>
-	<description>Send file or directory to glitchlinux.com:/home/x/Desktop/RECEIVED/</description>
-	<range></range>
-	<patterns>*</patterns>
-	<directories/>
-	<audio-files/>
-	<image-files/>
-	<other-files/>
-	<text-files/>
-	<video-files/>
-</action>
+</actions>
